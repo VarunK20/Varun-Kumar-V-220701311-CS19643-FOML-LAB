@@ -104,6 +104,11 @@ Access the app at: `http://localhost:5173`
 - 🧾 **Auto-generated Reports** with charts and summaries
 - 💡 **Insight Interpretation** using NLP on open responses
 
+## Other Features
+- 📁 Downloadable reports (PDF/CSV)
+- 📤 External API integrations (LMS, CRM)
+- ✍️ Edit or delete public surveys
+
 ---
 
 ## 🧪 Performance Metrics
@@ -123,9 +128,7 @@ Access the app at: `http://localhost:5173`
 - 🧠 GPT-based Summarization
 - 📜 Multilingual Surveys
 - 🧰 Docker + Kubernetes Deployment
-- 📤 External API integrations (LMS, CRM)
 - 🧩 Survey version control and audit logs
-- 📁 Downloadable reports (PDF/CSV)
 
 ---
 
