@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Modern color palette with vibrant purples and teals */
+  --background: 220 33% 98%;
+  --foreground: 224 71% 4%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 8% 46%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 224 71% 4%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  
+  /* Purple Primary & Secondary Colors */
+  --primary: 262 83% 58%; /* Vibrant purple */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 199 89% 48%; /* Bright blue */
+  --secondary-foreground: 0 0% 100%;
+  
+  /* Accent Colors */
+  --accent: 262 83% 96%; /* Light purple */
+  --accent-foreground: 262 83% 28%;
+  
+  /* Functional Colors */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --info: 199 89% 48%;
+  --info-foreground: 0 0% 100%;
+  
+  /* Chart Colors */
+  --chart-1: 262 83% 58%;
+  --chart-2: 199 89% 48%;
+  --chart-3: 330 82% 60%;
+  --chart-4: 142 76% 36%;
+  --chart-5: 38 92% 50%;
+  
+  /* UI Elements */
+  --ring: 262 83% 58%;
+  --radius: 0.75rem;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%), hsl(230, 84%, 64%));
+  --gradient-secondary: linear-gradient(135deg, hsl(199, 89%, 48%), hsl(178, 85%, 50%));
+}
+
+.dark {
+  --background: 224 71% 4%;
+  --foreground: 220 13% 91%;
+  --muted: 223 47% 11%;
+  --muted-foreground: 220 14% 66%;
+  --popover: 224 71% 4%;
+  --popover-foreground: 220 13% 91%;
+  --card: 224 71% 4%;
+  --card-foreground: 220 13% 91%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  
+  --primary: 262 83% 58%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 199 89% 48%; 
+  --secondary-foreground: 0 0% 100%;
+  
+  --accent: 262 83% 20%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --info: 199 89% 48%;
+  --info-foreground: 0 0% 100%;
+  
+  --ring: 262 83% 58%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-poppins antialiased bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter font-semibold tracking-tight;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full transition-colors;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/70;
+  }
+}
+
+@layer components {
+  .gradient-heading {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary;
+  }
+  
+  .gradient-border {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    padding: 2px; 
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 shadow-card hover:shadow-card-hover hover:-translate-y-1;
+  }
+  
+  .card-interactive {
+    @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:border-primary/20;
+  }
+  
+  .btn-gradient {
+    @apply relative overflow-hidden text-white transition-all duration-500 shadow-button hover:shadow-button-hover;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+  
+  .btn-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+    transition: width 0.5s ease;
+  }
+  
+  .btn-gradient:hover::before {
+    width: 100%;
+  }
+  
+  .btn-gradient:active {
+    @apply transform scale-95 transition-transform duration-75;
+  }
+  
+  .btn-glow {
+    @apply relative overflow-hidden shadow-glow;
+    animation: pulse-glow 3s infinite ease-in-out;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 15px rgba(124, 58, 237, 0.5), 0 0 5px rgba(124, 58, 237, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.7), 0 0 10px rgba(124, 58, 237, 0.4); }
+  }
+}
+
